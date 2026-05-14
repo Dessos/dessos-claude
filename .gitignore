@@ -1,0 +1,22 @@
+# OS
+Thumbs.db
+.DS_Store
+desktop.ini
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Python (in case any helper script lands)
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Local skill state / scratch
+.local/
+.claude/
+*.local.md
