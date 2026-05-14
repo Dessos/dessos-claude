@@ -1,0 +1,24 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "dessos-claude",
+  "description": "Personal engineering-skills marketplace by Dessos — generic, project-agnostic Claude Code skills distilled from real cross-project use.",
+  "owner": {
+    "name": "Dessos",
+    "url": "https://github.com/Dessos"
+  },
+  "plugins": [
+    {
+      "name": "dessos-claude",
+      "description": "Generic engineering skills for Claude Code — TDD, PRD authoring, refactor planning, architecture exploration, interview-driven design, DDD glossary, parallel interface design. Project-agnostic; domain overrides ride on top via project-local .claude/skills/.",
+      "author": {
+        "name": "Dessos"
+      },
+      "category": "engineering",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/Dessos/dessos-claude.git"
+      },
+      "homepage": "https://github.com/Dessos/dessos-claude"
+    }
+  ]
+}

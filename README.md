@@ -20,19 +20,16 @@ Nine skills covering the engineering workflow surface:
 
 ## Install
 
-```bash
-/plugin install Dessos/dessos-claude
+Inside Claude Code:
+
+```
+/plugin marketplace add Dessos/dessos-claude
+/plugin install dessos-claude@dessos-claude
 ```
 
-Or, in `.claude/settings.json`:
+Once installed at user scope, the skills are available in every project — no per-project wiring needed. Skills surface via the `Skill` tool or `/<skill-name>`.
 
-```json
-{
-  "plugins": ["Dessos/dessos-claude"]
-}
-```
-
-Then `/plugin reload`. Skills become available via the `Skill` tool or `/<skill-name>`.
+To update later: `/plugin marketplace update dessos-claude`.
 
 ## Project-specific overrides
 
