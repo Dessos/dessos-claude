@@ -18,7 +18,7 @@ Your own services across network boundary. Define port (interface) at module bou
 ## 4. True external (Mock)
 Third-party services you don't control. Mock at boundary.
 
-**Examples (typical)**: third-party REST APIs, external data feeds, SaaS provider SDKs.
+**Examples in this project**: BybitEU exchange API (via CCXT), external data feeds.
 
 ## Testing Strategy
 

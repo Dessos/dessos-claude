@@ -67,3 +67,4 @@ RIGHT (vertical):
 - Use `conftest.py` for fixtures shared across a test directory
 - Run with `pytest tests/` or target specific tiers
 - Use `tmp_path` fixture for file I/O, not hardcoded paths
+- basetemp: `O:/Code/trading-project/.pytest_tmp`

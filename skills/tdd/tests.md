@@ -23,7 +23,7 @@ Characteristics:
 ```python
 # BAD: Tests implementation details
 def test_risk_check_calls_margin_model(mocker):
-    mock_margin = mocker.patch("myproject.internal.margin_model.calculate")
+    mock_margin = mocker.patch("myproject.risk.margin_model.calculate")
     engine.submit_order(side="buy", size_usd=100.0)
     mock_margin.assert_called_once_with(100.0)
 ```
@@ -45,6 +45,6 @@ def test_fill_updates_database(engine, db_session):
 # GOOD: Verifies through interface
 def test_fill_updates_position(engine):
     engine.process_fill(fill_event)
-    position = engine.get_position(fill_event.symbol)
+    position = engine.get_position("BTC/USDC")
     assert position.size == fill_event.size
 ```

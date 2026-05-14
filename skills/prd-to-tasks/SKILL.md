@@ -52,9 +52,13 @@ For each slice in the output file:
 - [ ] [Tests pass]
 
 **Layers touched:**
-[Which parts of the architecture: e.g., Domain / Service / Persistence / API / UI / Config / Tests]
+[Which parts of the event pipeline: Domain / Strategy / Risk / Engine / Exchange / API / Metrics / Config / Tests]
 ```
 
-### Project-domain extension
+### Trading-Specific Considerations
 
-To add project-specific task constraints (governance gates, critical-path callouts, environment-specific implications), drop a project-local override at `.claude/skills/prd-to-tasks/SKILL.md` and append a `### Project-Specific Considerations` section. Local skills take precedence over plugin skills.
+- Tasks touching execution paths must specify paper-vs-live implications
+- Tasks changing risk controls are always HITL (risk has veto power per AGENTS.md)
+- Tasks adding new configuration must work with the YAML-overrides-env-vars model
+- Reference the event pipeline layers: Market -> Strategy -> Risk -> Order -> Execution -> Fill -> Portfolio -> Metrics
+- Cross-reference `AGENTS.md` governance for lifecycle gate requirements

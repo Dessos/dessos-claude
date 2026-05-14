@@ -1,59 +1,48 @@
-# dessos-claude
+# dessos-claude — `domain-coupled` branch
 
-Generic engineering skills for [Claude Code](https://claude.com/claude-code), distilled from real cross-project use. Ships project-agnostic so domain-specific overrides can ride on top.
+> **This is the `domain-coupled` branch.** It contains the full personal kit (14 skills + 11 commands + 6 rules), not the public-installable plugin. For the installable plugin see [`main`](https://github.com/Dessos/dessos-claude/tree/main).
 
-## What's inside
+## Purpose
 
-Nine skills covering the engineering workflow surface:
+A centralized reference of the operator's complete Claude Code workflow across two projects (a trading platform + an AI-OS enterprise project). Skills, commands, and rules here are **coupled to the operator's domain conventions** — V-series finding IDs, governance gates, vault structure, focus rubric, WSJF queue, etc.
 
-| Skill | When to use |
+Project-identifying strings have been sanitized (`aihedgefund` → `myproject`, `ai-hedgefund-2026` → `trading-project`); workflow conventions (HF_* env vars, hf_* metrics, V6-XXX finding IDs) are preserved as-is so the docs match the operator's actual environment.
+
+## Not installable as a plugin
+
+The `main` branch is the canonical installable Claude Code plugin (9 generic engineering skills). This `domain-coupled` branch is intentionally project-coupled and **should not be installed via `/plugin install`** — its skills assume specific repo structure (a `src/myproject/` layout, vault at `docs/vault/`, finding ledger at `reports/findings/`, etc.) that won't exist in arbitrary projects.
+
+Use this branch as a **reference** — clone the repo, `git checkout domain-coupled`, then hand-pick skills/commands/rules into your project's `.claude/` directory.
+
+## What's in the kit
+
+### Skills (14)
+
+| Skill | Purpose |
 |---|---|
-| [`tdd`](skills/tdd/SKILL.md) | Test-driven development with red-green-refactor loop. Vertical slices, not horizontal. |
-| [`improve-codebase-architecture`](skills/improve-codebase-architecture/SKILL.md) | Find refactoring opportunities by deepening shallow modules (Ousterhout). |
-| [`grill-me`](skills/grill-me/SKILL.md) | Interview-driven plan stress-testing. Walks every branch of the decision tree. |
-| [`write-a-prd`](skills/write-a-prd/SKILL.md) | Create a PRD via interactive interview, codebase exploration, module design. |
-| [`prd-to-plan`](skills/prd-to-plan/SKILL.md) | Convert a PRD into a multi-phase implementation plan using vertical tracer-bullet slices. |
-| [`prd-to-tasks`](skills/prd-to-tasks/SKILL.md) | Break a PRD into independently-grabbable HITL / AFK tasks. |
-| [`request-refactor-plan`](skills/request-refactor-plan/SKILL.md) | Create a detailed refactor plan with tiny commits via user interview. |
-| [`ubiquitous-language`](skills/ubiquitous-language/SKILL.md) | Extract a DDD-style glossary; flag ambiguities, propose canonical terms. |
-| [`design-an-interface`](skills/design-an-interface/SKILL.md) | Generate multiple radically different interface designs via parallel sub-agents. |
+| `tdd` | Test-driven red-green-refactor loop |
+| `code-review` | Project-conventions code review checklist |
+| `improve-codebase-architecture` | Deepen shallow modules (Ousterhout) |
+| `grill-me` | Interview-driven plan stress-testing with domain awareness |
+| `write-a-prd` | Interactive PRD authoring |
+| `prd-to-plan` | PRD → multi-phase vertical-slice plan |
+| `prd-to-tasks` | PRD → HITL/AFK tasks |
+| `request-refactor-plan` | Refactor plan with tiny commits |
+| `ubiquitous-language` | DDD glossary extraction |
+| `design-an-interface` | Parallel interface design via sub-agents |
+| `backtest-workflow` | Backtest run + analysis workflow |
+| `knowledge-ingest` | Vault knowledge ingestion |
+| `vault-code-bridge` | Cross-reference vault notes ↔ source code |
+| `close-finding` | 7-gate manual finding closure flow |
 
-## Install
+### Commands (11)
 
-Inside Claude Code:
+`adr-remember`, `adr-show`, `briefing`, `clean-doc-drift`, `file-finding`, `focus`, `focus-burndown`, `handoff`, `pivot-add`, `triage-routine-findings`, `wsjf`
 
-```
-/plugin marketplace add Dessos/dessos-claude
-/plugin install dessos-claude@dessos-claude
-```
+### Rules (6)
 
-Once installed at user scope, the skills are available in every project — no per-project wiring needed. Skills surface via the `Skill` tool or `/<skill-name>`.
-
-To update later: `/plugin marketplace update dessos-claude`.
-
-## Project-specific overrides
-
-The plugin ships generic versions. To layer domain awareness without forking the skill, drop a project-local override at `.claude/skills/<skill-name>/SKILL.md` in your repo — local skills take precedence over plugin skills.
-
-Example: append a `## Project-Domain Awareness` section to `grill-me` listing what to cross-reference for your project (governance rules, architectural constraints, risk gates).
-
-## Development
-
-Skills follow the [Anthropic skill format](https://docs.claude.com/en/docs/claude-code/skills): a directory containing `SKILL.md` with YAML frontmatter (`name`, `description`) followed by the prompt content.
-
-Lint a skill before committing:
-
-```bash
-# from the repo root
-python -m yaml < skills/<skill-name>/SKILL.md  # validates frontmatter
-```
-
-PRs welcome for generic skills only — domain-specific stuff belongs in project-local `.claude/skills/`.
-
-## Origin
-
-Most skills here derive from [mattpocock/skills](https://github.com/mattpocock/skills), refined through use on real production codebases (one large quantitative trading platform, one enterprise AI-OS project) and stripped of domain-specific framing. Customizations stay in each project's local `.claude/skills/`; the generic core lives here.
+`adr-workflow`, `findings-workflow`, `metrics-and-observability`, `multi-agent`, `risk-guardrails`, `vault-workflow`
 
 ## License
 
-[MIT](LICENSE) — use freely, modify, redistribute.
+[MIT](LICENSE) — same as `main`.

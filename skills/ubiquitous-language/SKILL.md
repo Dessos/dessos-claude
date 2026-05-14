@@ -5,7 +5,7 @@ description: Extract a DDD-style ubiquitous language glossary from the current c
 
 ### Process
 
-1. **Scan the conversation and codebase** for domain-relevant nouns, verbs, and concepts. Explore the domain / core / service directories (whatever your project's layout calls them) for term usage.
+1. **Scan the conversation and codebase** for domain-relevant nouns, verbs, and concepts. Explore `src/myproject/domain/`, `src/myproject/engine/`, `src/myproject/risk/`, and `src/myproject/strategy/` for term usage.
 2. **Identify problems**: same word for different concepts (ambiguity), different words for same concept (synonyms), vague or overloaded terms.
 3. **Propose a canonical glossary** with opinionated term choices.
 4. **Write to `UBIQUITOUS_LANGUAGE.md`** in the project root.
@@ -29,15 +29,16 @@ Write `UBIQUITOUS_LANGUAGE.md` with:
 - **Group terms into multiple tables** when natural clusters emerge.
 - **Write an example dialogue** (3-5 exchanges) clarifying boundaries between related concepts.
 
-### Commonly overloaded term clusters
+### Trading Domain Seed Terms
 
-Watch for these patterns of ambiguity (examples drawn from common domains — your project will have its own):
-
-- **Identity collisions** — the same word used for two different concepts (e.g., "Order" = customer-facing purchase request vs internal queueing slot)
-- **Synonym sprawl** — different words for the same concept (e.g., "User", "Account", "Customer", "Member" all referring to one entity)
-- **Lifecycle confusion** — process-states vs domain-states (e.g., "Active" the user-state vs "Active" the subscription-state vs "Active" the session-state)
-- **Aggregation conflation** — singular vs plural meaning (e.g., "Inventory" = the warehouse vs "Inventory" = one SKU)
-- **Time-mode terms** — when a concept means different things in different modes (e.g., dev vs staging vs prod; draft vs published; simulation vs production)
+Pay special attention to these commonly overloaded terms:
+- Position vs Exposure vs Holding
+- Order vs Signal vs Intent
+- Fill vs Execution vs Trade
+- PnL vs Equity vs Balance vs NAV
+- Risk limit vs Target size vs Max position
+- Strategy vs Model vs Signal generator
+- Paper vs Live vs Backtest modes
 
 ### Re-running
 

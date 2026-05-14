@@ -7,7 +7,7 @@ description: Create a Product Requirements Document through an interactive user 
 
 1. **Interview the user** -- Ask about the problem being solved, who benefits, success criteria, constraints, and non-goals. Be thorough but efficient.
 
-2. **Explore the codebase** -- Understand existing patterns, modules, and conventions that the feature must integrate with. Check the project's governance docs (`CLAUDE.md`, `AGENTS.md`, or equivalent) for rules that apply.
+2. **Explore the codebase** -- Understand existing patterns, modules, and conventions that the feature must integrate with. Check `AGENTS.md` for governance rules that apply.
 
 3. **Design the module** -- Propose where the feature fits in the architecture, which existing modules it touches, and what new modules (if any) are needed.
 
@@ -17,12 +17,16 @@ description: Create a Product Requirements Document through an interactive user 
    - **Scope** -- what's in, what's explicitly out
    - **Implementation Decisions** -- architectural choices, module placement, integration points
    - **Testing Decisions** -- what to test, test tier (unit/integration/contract), test approach
-   - **Risk & Governance** -- risk implications, lifecycle gates, environment-specific (dev/staging/prod) considerations
+   - **Risk & Governance** -- risk implications, lifecycle gates, paper-vs-live considerations
    - **Success Criteria** -- how we know it's done and working
    - **Non-Goals** -- explicitly excluded scope
 
-5. **Output** -- Save to a project-appropriate location (e.g., `docs/sprints/`, `docs/vault/sprints/`, `docs/prds/`) or present inline for user review.
+5. **Output** -- Save to `docs/vault/sprints/` or present inline for user review.
 
-### Project-domain extension
+### Trading-Specific Considerations
 
-To add project-specific PRD checks (governance rules, critical-path implications, lifecycle gates), drop a project-local override at `.claude/skills/write-a-prd/SKILL.md` and append a `### Project-Specific Considerations` section. Local skills take precedence over plugin skills, so the override layers on top.
+- Does this touch the execution path? If so, paper-vs-live implications are mandatory.
+- Does this change risk controls? AGENTS.md governance applies, risk has veto power.
+- Does this add new metrics? Must follow Prometheus conventions.
+- Does this add new configuration? Must work with YAML-overrides-env-vars model.
+- Does this affect the event pipeline? Map the impact through all stages.

@@ -7,6 +7,11 @@ Interview me relentlessly about every aspect of this plan until we reach a share
 
 If a question can be answered by exploring the codebase, explore the codebase instead.
 
-## How to use
+## Trading-Domain Awareness
 
-This skill ships as a generic interview workflow. To add project-specific awareness (governance rules, architectural constraints, risk gates, etc.), drop a project-local override at `.claude/skills/grill-me/SKILL.md` in your repo — local skills take precedence over plugin skills, so you can keep the interview core and append a `## Project-Domain Awareness` section that lists what to cross-reference.
+When grilling plans that touch trading infrastructure:
+- Cross-reference against `AGENTS.md` governance rules and lifecycle gates
+- Check risk guardrails in `docs/governance/` — risk has veto power
+- Verify paper-vs-live implications — research code must never call live exchange APIs
+- Consider the event pipeline impact: Market -> Strategy -> Risk -> Order -> Execution -> Fill -> Portfolio -> Metrics
+- Check if the plan respects the YAML-overrides-env-vars configuration model
