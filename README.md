@@ -4,12 +4,13 @@ Generic engineering skills for [Claude Code](https://claude.com/claude-code), di
 
 ## What's inside
 
-Nine skills covering the engineering workflow surface:
+Ten skills covering the engineering workflow surface:
 
 | Skill | When to use |
 |---|---|
 | [`tdd`](skills/tdd/SKILL.md) | Test-driven development with red-green-refactor loop. Vertical slices, not horizontal. |
 | [`improve-codebase-architecture`](skills/improve-codebase-architecture/SKILL.md) | Find refactoring opportunities by deepening shallow modules (Ousterhout). |
+| [`three-phase-derived-view-pattern`](skills/three-phase-derived-view-pattern/SKILL.md) | Apply write-sync / read-inject / staleness to keep a derived view (docs, indexes, ADR, dependency graphs) in sync with source state. |
 | [`grill-me`](skills/grill-me/SKILL.md) | Interview-driven plan stress-testing. Walks every branch of the decision tree. |
 | [`write-a-prd`](skills/write-a-prd/SKILL.md) | Create a PRD via interactive interview, codebase exploration, module design. |
 | [`prd-to-plan`](skills/prd-to-plan/SKILL.md) | Convert a PRD into a multi-phase implementation plan using vertical tracer-bullet slices. |

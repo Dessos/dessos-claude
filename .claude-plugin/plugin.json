@@ -1,6 +1,6 @@
 {
   "name": "dessos-claude",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Generic engineering skills for Claude Code — TDD, code review, PRD writing, refactor planning, architecture exploration, interview-driven design. Distilled from real cross-project use; ships project-agnostic so domain-specific overrides can ride on top via project-local .claude/skills/.",
   "author": {
     "name": "Dessos",
